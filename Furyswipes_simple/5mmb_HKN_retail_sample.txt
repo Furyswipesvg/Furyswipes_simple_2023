@@ -1,0 +1,635 @@
+// Version 112523_retail
+// Comments begin with //. They don't do anything in the script.
+<SetActiveWindowTrackingDelay 175>
+<SetActiveWindowTracking on>
+
+// These are window labels. Kind of like nicknames for long window names.
+
+  <Label w0 Local SendWinM toon1>
+  <Label w1 Local SendWinM toon2>
+  <Label w2 Local SendWinM toon3>
+  <Label w3 Local SendWinM toon4>
+  <Label w4 Local SendWinM toon5>
+
+// The above labels are your window names.
+// Short names are easier to work with.
+// So in this case, w0 will be used later to point to Mootalia's window.
+// Name your windows something that gives you a hint.
+// Toon name and a hint at the end about what wow license to click
+// It's not critical, but it's very helpful
+
+// This is the main launcher command definition.
+<Command LaunchAndRename>
+	<SendPC %1%>
+   <Run "D:/World of Warcraft/_retail_/Wow.exe" >
+<TargetWin "World of Warcraft">
+		<RenameTargetWin %2%>
+	<Wait 300>
+	<TargetWin "World of Warcraft">
+	<RenameTargetWin %2%>
+	<Wait 300>
+	<TargetWin %2%>
+	<SetWinSize %5% %6%>
+	<SetWinPos %7% %8%>
+	<SetForegroundWin>
+	<Text %3%>
+	<Key Tab>
+	<Text %4%>
+	<Key Enter>
+	<TargetWin %2%>
+	<WaitForInputIdle 2000>
+
+// This is the second Launcher command definition
+// It's not used. You CAN use it as a special wow setup for your main.
+// You know, max graphics, sound, etc.
+// NEXT STEP: If you want to do this, you have to make a SEPERATE WOW
+// DIR and put the path below. Set that wow up the way you want.
+<Command LaunchHiresAndRename>
+	<SendPC %1%>
+	<Run "D:/World of Warcraft2/_retail_/Wow.exe" >
+	<WaitForInputIdle 400>
+	<TargetWin "World of Warcraft">  
+	<RenameTargetWin %2%>  
+	<WaitForInputIdle 400>
+	<TargetWin "World of Warcraft">  
+	<RenameTargetWin Unused%2%>  
+	<TargetWin %2%>
+	<TargetWin %2%>
+	<WaitForInputIdle 400>
+	<WaitForInputIdle 400>
+	<Text %3%>
+	<Key Tab>
+	<Text %4%>
+	<TargetWin %2%>
+	//<RemoveWinFrame>
+	<SetWinSize %5% %6%>
+	<SetWinPos %7% %8%>
+	<SetVar LastWin ActiveWindowName>
+
+// This command is used to resize your window.	
+<Command ResetWindowPosition>
+	<SendPC %1%> 
+	<TargetWin %2%>
+	<SetForegroundWin>
+	<SetWinSize %3% %4%>
+	<SetWinPos %5% %6%>
+
+// This is your first HOTKEY. That's a key combo that only works when scroll_lock is on.
+// In this case that combo is Alt-Ctrl-m (case doesn't matter)
+// It launches your wow windows!
+// The numbers at the end are the window size (x and y) and the window position (x and y)
+// Experiment with them if you like.
+// OPTIONAL STEP: If you want to run a special wow setup for your main, 
+// change the command LaunchAndRename to LaunchHiresAndRename just for your main.
+
+<Hotkey ScrollLockOn Alt Ctrl m>
+  <if WinDoesNotExist toon1>
+  <LaunchAndRename Local toon1 mywowmail1@gmail.com PaSwOrD 1920 1440 960 720 >
+  <if WinDoesNotExist toon2>
+  <LaunchAndRename Local toon2 mywowmail2@gmail.com PaSwOrD 960 720 0 720 >
+  <if WinDoesNotExist toon3>
+  <LaunchAndRename Local toon3 mywowmail3@gmail.com PaSwOrD 960 720 960 0 >
+  <if WinDoesNotExist toon4>
+  <LaunchAndRename Local toon4 mywowmail4@gmail.com PaSwOrD 960 720 1920 0 >
+  <if WinDoesNotExist toon5>
+  <LaunchAndRename Local toon5 mywowmail5@gmail.com PaSwOrD 960 720 2880 720 >
+
+<Hotkey ScrollLockOn Shift Ctrl m>
+  <ResetWindowPosition Local toon1 1920 1440 960 720 >
+  <ResetWindowPosition Local toon2 960 720 0 720>
+  <ResetWindowPosition Local toon3 960 720 960 0>
+  <ResetWindowPosition Local toon4 960 720 1920 0>
+  <ResetWindowPosition Local toon5 960 720 2880 720 >
+
+
+<Hotkey ScrollLockOn NumpadEnd>
+<SaveMousePos>
+<ResetWindowPosition Local toon1 1920 1440 960 720 >
+<ResetWindowPosition Local toon2 960 720 0 720>
+<ResetWindowPosition Local toon3 960 720 960 0>
+<ResetWindowPosition Local toon4 960 720 1920 0>
+<ResetWindowPosition Local toon5 960 720 2880 720 >
+<RestoreMousePos>
+<Hotkey ScrollLockOn NumpadDown>
+<SaveMousePos>
+<ResetWindowPosition Local toon1 960 720 0 720>
+<ResetWindowPosition Local toon2 1920 1440 960 720 >
+<ResetWindowPosition Local toon3 960 720 960 0>
+<ResetWindowPosition Local toon4 960 720 1920 0>
+<ResetWindowPosition Local toon5 960 720 2880 720 >
+<RestoreMousePos>
+<Hotkey ScrollLockOn NumpadPgDn>
+<SaveMousePos>
+<ResetWindowPosition Local toon1 960 720 960 0>
+<ResetWindowPosition Local toon2 960 720 0 720>
+<ResetWindowPosition Local toon3 1920 1440 960 720 >
+<ResetWindowPosition Local toon4 960 720 1920 0>
+<ResetWindowPosition Local toon5 960 720 2880 720 >
+<RestoreMousePos>
+<Hotkey ScrollLockOn NumpadLeft>
+<SaveMousePos>
+<ResetWindowPosition Local toon1 960 720 1920 0>
+<ResetWindowPosition Local toon2 960 720 0 720>
+<ResetWindowPosition Local toon3 960 720 960 0>
+<ResetWindowPosition Local toon4 1920 1440 960 720 >
+<ResetWindowPosition Local toon5 960 720 2880 720 >
+<RestoreMousePos>
+<Hotkey ScrollLockOn Clear>
+<SaveMousePos>
+<ResetWindowPosition Local toon1 960 720 2880 720 >
+<ResetWindowPosition Local toon2 960 720 0 720>
+<ResetWindowPosition Local toon3 960 720 960 0>
+<ResetWindowPosition Local toon4 960 720 1920 0>
+<ResetWindowPosition Local toon5 1920 1440 960 720 >
+<RestoreMousePos>
+
+<Hotkey ScrollLockOn Numpad1>
+	<DoHotKey Hotkey ScrollLockOn NumpadEnd>
+<Hotkey ScrollLockOn Numpad2>
+	<DoHotKey Hotkey ScrollLockOn NumpadDown>
+<Hotkey ScrollLockOn Numpad3>
+	<DoHotKey Hotkey ScrollLockOn NumpadPgDn>
+<Hotkey ScrollLockOn Numpad4>
+	<DoHotKey Hotkey ScrollLockOn NumpadLeft>
+<Hotkey ScrollLockOn Numpad5>
+	<DoHotkey Hotkey ScrollLockOn Clear>
+
+// This is the hotkey that closes all windows-- Ctrl-Alt-o (letter O)	
+<Hotkey ScrollLockOn Alt Ctrl o>
+	<SendLabel w0,w1,w2,w3,w4>
+  <CloseWin>
+	
+
+// This is a special hotkey I made for reloading all your user interfaces in wow.
+// Ctrl-L (case never matters) will enter /reload into each window
+<Hotkey ScrollLockOn Ctrl l>
+	<SendLabel w0,w1,w2,w3,w4>
+  <Key enter>
+	  <Wait 250>
+	  <Key divide>
+	  <Wait 25>
+	  <Text reload>
+	  <Wait 175>
+	  <Key enter>
+	
+// This is the true magic...this runs /init in each window to set up bindings and macros!
+// Ctrl-i
+<Hotkey ScrollLockOn Ctrl i>
+	<SendLabel w0,w1,w2,w3,w4>
+  <Key enter>
+	  <Wait 250>
+	  <Key divide>
+	  <Wait 25>
+	  <Text init>
+	  <Wait 175>
+	  <Key enter>
+	
+//-----------------------------------------------------------
+// This is the key you hold down to send mouse clicks to all windows.
+// I use ~ (the key to the left of the 1 key)
+// That key is oem5 in Germany and oem8 in UK. If none of those work, you may be oem7.
+//-----------------------------------------------------------
+<UseKeyAsModifier oem3>
+<Hotkey ScrollLockOn oem3 LButton, RButton, Button4, Button5>
+      <SaveMousePos>
+      <SendLabel w0,w1,w2,w3,w4>
+      <Wait 5>
+      <ClickMouse %TriggerMainKey%>
+      <ClickMouse %TriggerMainKey%>
+      <Wait 5>
+      <RestoreMousePos>
+
+<Hotkey ScrollLockOn LButton, MButton, RButton, Button4, Button5>
+	<Passthrough>
+	<If MouseIsOverWindowRect toon1 105 260 65 330 >
+	<SaveMousePos>
+	<Wait 5>
+	<SendLabel w1,w2,w3,w4>
+	<ClickMouse Scale %Trigger%>
+	<ClickMouse Scale %Trigger%>
+	<Wait 5>
+	<RestoreMousePos>
+
+//-----------------------------------------------------------
+// This is the catch-all hotkey definition. Every key here
+// will be sent to both windows. Any key NOT HERE will NOT.
+// Notice there is an exception list at the end.
+// The word %Trigger% gets replaced with whatever key you clicked.
+//-----------------------------------------------------------
+<Hotkey ScrollLockOn A-Z, 1-9, Shift, Ctrl, Alt, 0, Minus, Esc , Divide, F1-F12 except 1-6,F7,F9,F10,E,F,Q,H, W, A, S, D, R, T, Y, I, U, J, V>
+	<SendLabel w0,w1,w2,w3,w4>
+ <Key %Trigger%>
+
+//-----------------------------------------------------------
+// THIS KEY IS DIFFERENT. THESE are MOVEMENT key definitions.
+// This is different from a Hotkey. Hotkeys only work once, the instant
+// You press them. Movement keys can be held down, and they work
+// constantly.
+// Notice, asdw, the normal wow keys aren't here. You don't want your normal
+// wow movement keys to move your side  toons.
+// Use the arrow keys for that. (see, they are there)
+//-----------------------------------------------------------
+	<MovementHotkey ScrollLockOn space, up, down, left, right,e,q>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key %Trigger%>
+
+//You can even make special movement keys for just some of your toons.
+//Melee backup
+<MovementHotkey ScrollLockOn v>
+	<Sendlabel w3>
+  <Key Down>
+
+//Melee forward
+<MovementHotkey ScrollLockOn r>
+	<Sendlabel w3>
+  <Key Up>
+
+//Healer backup
+<MovementHotkey ScrollLockOn Y>
+	<Sendlabel w4>
+  <Key Down>
+
+//Mana backup
+<MovementHotkey ScrollLockOn H>
+	<Sendlabel w1,w2,w4>
+  <Key Down>
+
+//-------------------------------------------------------------
+// Everything below these lines are special hotkeys I made.
+
+// First trick key--when you hit = only send it to the window where your mouse is.
+// 
+<Hotkey ScrollLockOn plus>
+	<SendFocusWin>
+	<Key plus>
+
+// Another trick key--when you hit F9, don't hit F9.
+// Instead, cycle through Shift-F1-F6, where you put some buffing macros.
+// This is called round-robin, and is accomplished through the toggle keyword.
+// You can do amazing things with your toggle.
+<Hotkey F9>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F1>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F2>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F3>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F4>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F5>
+	<Toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F6>
+
+// More magic. I redefined alt-1
+// When you hit it, it will send alt-1 AND F11 (which is a macro that says /assist Furyswipes)
+// So alt-1 forces people to assist main.
+// I do it this way so you only have to change one macro to change your main.
+// Don't put assist in your dps macros.
+<Hotkey ScrollLockOn Alt 1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 1>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+
+// Same magic for 2-6, F7
+<Hotkey ScrollLockOn 2-6,F7>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key %Trigger%>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+<Hotkey ScrollLockOn 1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key 1>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w3>
+	<Key shift f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w3>
+	<Key shift f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w3>
+	<Key shift f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w3>
+	<Key shift f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w3>
+	<Key shift f12>
+
+// Now--ANY KEY that uses a HKN MODIFIER (alt/ctrl/shift) WILL NOT WORK.
+// UNLESS.......you define it!
+<Hotkey ScrollLockOn Alt 2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 2> 
+<Hotkey ScrollLockOn Alt 3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 3> 
+
+// Now, alt-4 is a special key for 5-minute multiboxing.
+// It also sends an F10 (a macro with /follow furyswipes) and F11 (the assist macro)
+// So alt-4 is how you make your toons follow again.
+// YOU WILL USE ALT-4 CONSTANTLY. GET USED TO IT, SUCKAS.
+<Hotkey ScrollLockOn Alt 4>
+	<ResetToggles>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key shift f8>
+	<Key ctrl f8>
+	<endif>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key shift f9>
+	<Key ctrl f9>
+	<endif>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key shift f10>
+	<Key ctrl f10>
+	<endif>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key shift f11>
+	<Key ctrl f11>
+	<endif>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key shift f12>
+	<Key ctrl f12>
+	<endif>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 4>
+
+// F is my favorite new key. It is mapped to "Interact with target" keybind.
+// When you hit it the first time, everyone will assist your leader.
+// When you hit it a second time. LEEEEEEEEROYYYYYY!!!!!!!
+// Everyone will attack your target or open a vendor, OR skin a dead animal,
+// ...you get the idea.
+<Hotkey ScrollLockOn f>
+	//<toggle>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<Key f>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<Key f>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<Key f>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<Key f>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+	<Key f>
+	//<toggle>
+	//<SendLabel w0,w1,w2,w3,w4>
+	//<Key f>
+
+// Awesome magic here. I put an interrupt skill in shift-3 action bar.
+// this goes through each one at a time
+// (after focusing on main's target on the first click)
+<Hotkey ScrollLockOn Shift 3>
+	<Toggle>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+	<Toggle>
+	<SendLabel w0>
+	<Key Shift 3>
+	<Toggle>
+	<SendLabel w1>
+	<Key Shift 3>
+	<Toggle>
+	<SendLabel w2>
+	<Key Shift 3>
+	<Toggle>
+	<SendLabel w3>
+	<Key Shift 3>
+	<Toggle>
+	<SendLabel w4>
+	<Key Shift 3>
+
+// Shift-4 is also a skill that focuses tank target.
+<Hotkey ScrollLockOn Shift 4> 
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+	<Endif>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 4>
+
+// More boring modifier maps--has to be done
+<Hotkey ScrollLockOn Alt 5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 5> 
+<Hotkey ScrollLockOn Alt 6>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 6> 
+<Hotkey ScrollLockOn Alt 7>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 7> 
+<Hotkey ScrollLockOn Alt 8>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 8> 
+<Hotkey ScrollLockOn Alt 9>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 9> 
+<Hotkey ScrollLockOn Alt 0>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt 0> 
+<Hotkey ScrollLockOn Alt Plus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt Plus> 
+<Hotkey ScrollLockOn Alt Minus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt Minus> 
+// Special one for ctrl-alt-1 if you ever need it.
+<Hotkey ScrollLockOn Ctrl Alt 1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl Alt 1>
+<Hotkey ScrollLockOn Alt F1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Alt F1>
+<Hotkey ScrollLockOn Ctrl 1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 1>
+<Hotkey ScrollLockOn Ctrl 2> 
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 2> 
+<Hotkey ScrollLockOn Ctrl 3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 3> 
+<Hotkey ScrollLockOn Ctrl 4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 4> 
+<Hotkey ScrollLockOn Ctrl 5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 5> 
+<Hotkey ScrollLockOn Ctrl 6>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 6> 
+<Hotkey ScrollLockOn Ctrl 7>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 7> 
+<Hotkey ScrollLockOn Ctrl 8>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 8> 
+<Hotkey ScrollLockOn Ctrl 9>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 9> 
+<Hotkey ScrollLockOn Ctrl 0>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl 0> 
+<Hotkey ScrollLockOn Ctrl Plus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl Plus> 
+<Hotkey ScrollLockOn Ctrl Minus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Ctrl Minus> 
+<Hotkey ScrollLockOn Shift 1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 1>
+// Shift 2 is the polymorph button. First click is assist tank, second click is poly
+<Hotkey ScrollLockOn Shift 2>
+	<toggle>
+	<if MouseIsOverWindow toon1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f8>
+	<if MouseIsOverWindow toon2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f9>
+	<if MouseIsOverWindow toon3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f10>
+	<if MouseIsOverWindow toon4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f11>
+	<if MouseIsOverWindow toon5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key ctrl f12>
+	<toggle>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 2> 
+<Hotkey ScrollLockOn Shift 5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 5> 
+<Hotkey ScrollLockOn Shift 6>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 6> 
+<Hotkey ScrollLockOn Shift 7>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 7> 
+<Hotkey ScrollLockOn Shift 8>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 8> 
+<Hotkey ScrollLockOn Shift 9>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 9> 
+<Hotkey ScrollLockOn Shift 0>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift 0> 
+<Hotkey ScrollLockOn Shift Plus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift Plus> 
+<Hotkey ScrollLockOn Shift Minus>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift Minus> 
+<Hotkey ScrollLockOn Shift F1>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F1>
+<Hotkey ScrollLockOn Shift F2>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F2> 
+<Hotkey ScrollLockOn Shift F3>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F3> 
+<Hotkey ScrollLockOn Shift F4>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F4> 
+<Hotkey ScrollLockOn Shift F5>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F5> 
+<Hotkey ScrollLockOn Shift F6>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F6> 
+<Hotkey ScrollLockOn Shift F7>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F7> 
+<Hotkey ScrollLockOn Shift F8>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F8> 
+<Hotkey ScrollLockOn Shift F9>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F9> 
+<Hotkey ScrollLockOn Shift F10>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F10> 
+<Hotkey ScrollLockOn Shift F11>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F11> 
+<Hotkey ScrollLockOn Shift F12>
+	<SendLabel w0,w1,w2,w3,w4>
+	<Key Shift F12> 
+
