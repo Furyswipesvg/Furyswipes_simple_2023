@@ -1,7 +1,5 @@
 // Version 112523_retail
 // Comments begin with //. They don't do anything in the script.
-<SetActiveWindowTrackingDelay 175>
-<SetActiveWindowTracking on>
 
 // These are window labels. Kind of like nicknames for long window names.
 
@@ -21,9 +19,9 @@
 // This is the main launcher command definition.
 <Command LaunchAndRename>
 	<SendPC %1%>
-   <Run "D:/World of Warcraft/_retail_/Wow.exe" >
+   <Run "E:/World of Warcraft/_retail_/Wow.exe" >
 <TargetWin "World of Warcraft">
-		<RenameTargetWin %2%>
+	<RenameTargetWin %2%>
 	<Wait 300>
 	<TargetWin "World of Warcraft">
 	<RenameTargetWin %2%>
@@ -38,33 +36,6 @@
 	<Key Enter>
 	<TargetWin %2%>
 	<WaitForInputIdle 2000>
-
-// This is the second Launcher command definition
-// It's not used. You CAN use it as a special wow setup for your main.
-// You know, max graphics, sound, etc.
-// NEXT STEP: If you want to do this, you have to make a SEPERATE WOW
-// DIR and put the path below. Set that wow up the way you want.
-<Command LaunchHiresAndRename>
-	<SendPC %1%>
-	<Run "D:/World of Warcraft2/_retail_/Wow.exe" >
-	<WaitForInputIdle 400>
-	<TargetWin "World of Warcraft">  
-	<RenameTargetWin %2%>  
-	<WaitForInputIdle 400>
-	<TargetWin "World of Warcraft">  
-	<RenameTargetWin Unused%2%>  
-	<TargetWin %2%>
-	<TargetWin %2%>
-	<WaitForInputIdle 400>
-	<WaitForInputIdle 400>
-	<Text %3%>
-	<Key Tab>
-	<Text %4%>
-	<TargetWin %2%>
-	//<RemoveWinFrame>
-	<SetWinSize %5% %6%>
-	<SetWinPos %7% %8%>
-	<SetVar LastWin ActiveWindowName>
 
 // This command is used to resize your window.	
 <Command ResetWindowPosition>
@@ -84,15 +55,15 @@
 
 <Hotkey ScrollLockOn Alt Ctrl m>
   <if WinDoesNotExist toon1>
-  <LaunchAndRename Local toon1 mywowmail1@gmail.com PaSwOrD 1920 1440 960 720 >
+  <LaunchAndRename Local toon1 freeaccocunt@gmail.com PaSsWoRd 1920 1440 960 720  >
   <if WinDoesNotExist toon2>
-  <LaunchAndRename Local toon2 mywowmail2@gmail.com PaSwOrD 960 720 0 720 >
+  <LaunchAndRename Local toon2 free.accocunt@gmail.com PaSsWoRd 960 720 0 720 >
   <if WinDoesNotExist toon3>
-  <LaunchAndRename Local toon3 mywowmail3@gmail.com PaSwOrD 960 720 960 0 >
+  <LaunchAndRename Local toon3 freeacc.ocunt@gmail.com PaSsWoRd 960 720 960 0 >
   <if WinDoesNotExist toon4>
-  <LaunchAndRename Local toon4 mywowmail4@gmail.com PaSwOrD 960 720 1920 0 >
+  <LaunchAndRename Local toon4 freeacco.cunt@gmail.com PaSsWoRd 960 720 1920 0 >
   <if WinDoesNotExist toon5>
-  <LaunchAndRename Local toon5 mywowmail5@gmail.com PaSwOrD 960 720 2880 720 >
+  <LaunchAndRename Local toon5 freeaccocu.nt@gmail.com PaSsWoRd 960 720 2880 720 >
 
 <Hotkey ScrollLockOn Shift Ctrl m>
   <ResetWindowPosition Local toon1 1920 1440 960 720 >
@@ -100,7 +71,6 @@
   <ResetWindowPosition Local toon3 960 720 960 0>
   <ResetWindowPosition Local toon4 960 720 1920 0>
   <ResetWindowPosition Local toon5 960 720 2880 720 >
-
 
 <Hotkey ScrollLockOn NumpadEnd>
 <SaveMousePos>
@@ -191,24 +161,18 @@
 //-----------------------------------------------------------
 <UseKeyAsModifier oem3>
 <Hotkey ScrollLockOn oem3 LButton, RButton, Button4, Button5>
-      <SaveMousePos>
       <SendLabel w0,w1,w2,w3,w4>
-      <Wait 5>
-      <ClickMouse %TriggerMainKey%>
-      <ClickMouse %TriggerMainKey%>
-      <Wait 5>
-      <RestoreMousePos>
+      <ClickMouse %TriggerMainKey% scale>
 
-<Hotkey ScrollLockOn LButton, MButton, RButton, Button4, Button5>
-	<Passthrough>
-	<If MouseIsOverWindowRect toon1 105 260 65 330 >
-	<SaveMousePos>
-	<Wait 5>
-	<SendLabel w1,w2,w3,w4>
-	<ClickMouse Scale %Trigger%>
-	<ClickMouse Scale %Trigger%>
-	<Wait 5>
-	<RestoreMousePos>
+//<Hotkey ScrollLockOn LButton, MButton, RButton, Button4, Button5>
+	//<Passthrough>
+	//<If MouseIsOverWindowRect toon1 105 260 65 330 >
+	//<SaveMousePos>
+	//<Wait 5>
+	//<SendLabel w1,w2,w3,w4>
+	//<ClickMouse Scale %Trigger%>
+	//<Wait 5>
+	//<RestoreMousePos>
 
 //-----------------------------------------------------------
 // This is the catch-all hotkey definition. Every key here
@@ -232,6 +196,19 @@
 	<MovementHotkey ScrollLockOn space, up, down, left, right,e,q>
 	<SendLabel w0,w1,w2,w3,w4>
 	<Key %Trigger%>
+
+//Spread out
+<MovementHotkey ScrollLockOn j>
+	<Sendlabel w2>
+  <Key left>
+	<Sendlabel w3>
+  <Key left>
+  <Key down>
+	<Sendlabel w4>
+  <Key down>
+	<Sendlabel w5>
+  <Key right>
+  <Key down>
 
 //You can even make special movement keys for just some of your toons.
 //Melee backup
